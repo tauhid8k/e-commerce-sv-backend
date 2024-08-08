@@ -1,7 +1,4 @@
 {
     "css.lint.unknownAtRules": "ignore",
-    "cSpell.words": [
-        "Laravel",
-        "tailwindcss"
-    ]
+    "cSpell.words": ["Laravel", "Spatie", "tailwindcss"]
 }

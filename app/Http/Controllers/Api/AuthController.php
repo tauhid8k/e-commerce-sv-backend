@@ -13,6 +13,15 @@ class AuthController extends Controller
 {
     use ApiResponses;
 
+    // Auth Check
+    public function auth()
+    {
+        return response()->json([
+            'auth' => auth('web')->check(),
+            'user' => auth('web')->user()
+        ]);
+    }
+
     // Register User
     public function register()
     {

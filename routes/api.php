@@ -13,6 +13,6 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Private Routes
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', fn (Request $request) => $request->user());
+    Route::get('/auth', [AuthController::class, 'auth']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });

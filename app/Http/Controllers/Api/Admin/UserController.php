@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\V1\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->get();
-        return response()->json($users);
+        return UserResource::collection(User::latest()->paginate());
     }
 
     /**

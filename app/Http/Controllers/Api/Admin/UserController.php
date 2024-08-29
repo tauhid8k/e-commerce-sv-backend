@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Filters\V1\UserFilter;
-use App\Http\Resources\Api\V1\UserResource;
-use App\Models\User;
+use App\Http\Filters\Api\UserFilter;
+use App\Http\Resources\Api\UserResource;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Filters\V1;
+namespace App\Http\Filters\Api;
 
 class UserFilter extends QueryFilter
 {

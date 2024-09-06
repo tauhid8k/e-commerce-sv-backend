@@ -13,10 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(50000)->create();
+        User::factory(1000)->create();
 
         $this->call([
-            RolesAndPermissionsSeeder::class
+            RolesAndPermissionsSeeder::class,
+            CategorySeeder::class,
+            AttributeSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }

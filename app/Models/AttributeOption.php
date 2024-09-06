@@ -15,6 +15,9 @@ class AttributeOption extends Model
         'value',
     ];
 
+    /**
+     * Get attribute of the option
+     */
     public function attribute(): BelongsTo
     {
         return $this->belongsTo(Attribute::class);

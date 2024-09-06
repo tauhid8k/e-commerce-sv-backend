@@ -14,6 +14,9 @@ class Attribute extends Model
         'name',
     ];
 
+    /**
+     * Get options of the attribute
+     */
     public function attributeOptions(): HasMany
     {
         return $this->hasMany(AttributeOption::class);

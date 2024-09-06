@@ -11,12 +11,7 @@ class Sku extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'product_id',
-        'code',
-        'price',
-        'quantity'
-    ];
+    protected $guarded = [];
 
     protected function price(): Attribute
     {
@@ -26,11 +21,17 @@ class Sku extends Model
         );
     }
 
+    /**
+     * Get product of the sku
+     */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
+    /**
+     * Get attribute options of the sku
+     */
     public function attributeOptions(): BelongsToMany
     {
         return $this->belongsToMany(AttributeOption::class);

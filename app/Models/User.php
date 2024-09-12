@@ -17,6 +17,11 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
+     * Append role and permissions
+     */
+    protected $appends = ['role', 'permissions'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -50,8 +55,23 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Apply dynamic filtering to the query builder using a QueryFilter class
+     */
     public function scopeFilter(Builder $builder, QueryFilter $filters)
     {
         return $filters->apply($builder);
+    }
+
+    // Get Role
+    public function getRoleAttribute()
+    {
+        return $this->roles()->pluck('name')->first();
+    }
+
+    // Get Permissions
+    public function getPermissionsAttribute()
+    {
+        return $this->getPermissionsViaRoles()->pluck('name');
     }
 }

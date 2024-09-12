@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\Auth\LoginRequest;
-use App\Http\Resources\Api\UserResource;
+use App\Http\Resources\Api\User\UserResource;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponses;
@@ -18,7 +18,7 @@ class AuthController extends Controller
     public function auth()
     {
         return response()->json([
-            'auth' => auth('web')->check(),
+            'isAuthenticated' => auth('web')->check(),
             'user' => new UserResource(auth('web')->user())
         ]);
     }

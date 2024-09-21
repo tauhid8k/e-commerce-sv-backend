@@ -26,6 +26,18 @@ class CategorySeeder extends Seeder
                 'slug' => str()->slug('T-Shirt'),
                 'is_visible' => true,
             ],
+            [
+                'parent_id' => null,  // Root category
+                'name' => 'Women',
+                'slug' => str()->slug('Women'),
+                'is_visible' => true,
+            ],
+            [
+                'parent_id' => 3,  // Child of Women Category
+                'name' => 'Dresses',
+                'slug' => str()->slug('Dresses'),
+                'is_visible' => true,
+            ]
         ]);
     }
 }

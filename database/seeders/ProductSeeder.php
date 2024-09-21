@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
 
         $products = [
             [
-                'category_id' => 1,
+                'categories' => [1, 2],
                 'name' => 'V Neck T-Shirt',
                 'skus' => [
                     [
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
                 ]
             ],
             [
-                'category_id' => 1,
+                'categories' => [1, 2],
                 'name' => 'Round Neck T-Shirt',
                 'skus' => [
                     [
@@ -92,10 +92,12 @@ class ProductSeeder extends Seeder
         foreach ($products as $product) {
             DB::transaction(function () use ($product, $attributesByName) {
                 $createdProduct = Product::create([
-                    'category_id' => $product['category_id'],
                     'name' => $product['name'],
                     'slug' => str($product['name'])->slug()
                 ]);
+
+                // Attach multiple categories
+                $createdProduct->categories()->attach($product['categories']);
 
                 foreach ($product['skus'] as $sku) {
                     $skuValue = str($product['name']);

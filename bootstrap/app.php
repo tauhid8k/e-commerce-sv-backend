@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(
-            except: ['telescope/*']
+            except: ['api/*', 'telescope/*']
         );
 
         $middleware->statefulApi();

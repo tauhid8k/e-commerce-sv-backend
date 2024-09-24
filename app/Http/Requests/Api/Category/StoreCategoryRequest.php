@@ -31,4 +31,14 @@ class StoreCategoryRequest extends FormRequest
             'seo_description' => ['nullable', 'string', 'max:160'],
         ];
     }
+
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'is_visible' => filter_var($this->is_visible, FILTER_VALIDATE_BOOLEAN),
+        ]);
+    }
 }

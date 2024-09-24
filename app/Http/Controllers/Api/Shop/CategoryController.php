@@ -53,7 +53,16 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        Category::destroy($id);
+        $category = Category::findOrFail($id);
+
+        // Delete associated products
+        $category->products()->delete();
+
+        // Delete pivot table entry
+        $category->products()->detach();
+
+        // Delete category itself
+        $category->delete();
 
         return $this->success('Category deleted');
     }

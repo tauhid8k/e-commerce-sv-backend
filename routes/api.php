@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\SelectOptionsController;
+use App\Http\Controllers\Api\Shop\AttributeController;
 use App\Http\Controllers\Api\Shop\BrandController;
 use App\Http\Controllers\Api\Shop\CategoryController;
 
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/options/brands', [SelectOptionsController::class, 'getBrands']);
 
     Route::apiResource('/categories', CategoryController::class);
+    Route::apiResource('/attributes', AttributeController::class);
     Route::apiResource('/brands', BrandController::class);
     Route::apiResource('/users', UserController::class);
 });

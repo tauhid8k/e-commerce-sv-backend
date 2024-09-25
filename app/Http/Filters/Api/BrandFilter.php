@@ -4,7 +4,7 @@ namespace App\Http\Filters\Api;
 
 class BrandFilter extends QueryFilter
 {
-    // Search by name or email
+    // Search by name
     public function search($value)
     {
         return $this->builder->where('name', 'like', "%{$value}%");

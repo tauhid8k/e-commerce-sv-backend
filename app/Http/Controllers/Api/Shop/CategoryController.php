@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        return $this->success('Category added');
+        return $this->success('Category added', 201);
     }
 
     /**

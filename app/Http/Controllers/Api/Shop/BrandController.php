@@ -29,7 +29,7 @@ class BrandController extends Controller
     {
         Brand::create($request->validated());
 
-        return $this->success('Brand added');
+        return $this->success('Brand added', 201);
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\Category;
+namespace App\Http\Requests\Api\Brand;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class StoreBrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'parent_id' => ['nullable', 'exists:categories,id'],
             'name' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:categories,slug'],
+            'slug' => ['required', 'string', 'max:255', 'unique:brands,slug'],
+            'website' => ['nullable', 'url:http,https'],
             'description' => ['nullable', 'string'],
             'is_visible' => ['boolean'],
             'seo_title' => ['nullable', 'string', 'max:60'],

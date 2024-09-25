@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Shop;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Api\CategoryFilter;
@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class AdminCategoryController extends Controller
 {
     use ApiResponses;
 

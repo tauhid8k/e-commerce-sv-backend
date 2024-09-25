@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Shop;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Api\AttributeFilter;
@@ -11,7 +11,7 @@ use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AttributeController extends Controller
+class AdminAttributeController extends Controller
 {
     use ApiResponses;
 

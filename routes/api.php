@@ -3,11 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\SelectOptionsController;
-use App\Http\Controllers\Api\Shop\AttributeController;
-use App\Http\Controllers\Api\Shop\BrandController;
-use App\Http\Controllers\Api\Shop\CategoryController;
+use App\Http\Controllers\Api\Admin\AdminUserController;
+use App\Http\Controllers\Api\Admin\AdminBrandController;
+use App\Http\Controllers\Api\Admin\AdminCategoryController;
+use App\Http\Controllers\Api\Admin\AdminAttributeController;
 
 // Public Routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -21,8 +21,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/options/categories', [SelectOptionsController::class, 'getCategories']);
     Route::get('/options/brands', [SelectOptionsController::class, 'getBrands']);
 
-    Route::apiResource('/categories', CategoryController::class);
-    Route::apiResource('/attributes', AttributeController::class);
-    Route::apiResource('/brands', BrandController::class);
-    Route::apiResource('/users', UserController::class);
+    Route::prefix('admin')->group(function () {
+        Route::apiResource('/categories', AdminCategoryController::class);
+        Route::apiResource('/attributes', AdminAttributeController::class);
+        Route::apiResource('/brands', AdminBrandController::class);
+        Route::apiResource('/users', AdminUserController::class);
+    });
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Shop;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Api\BrandFilter;
@@ -10,7 +10,7 @@ use App\Models\Brand;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
 
-class BrandController extends Controller
+class AdminBrandController extends Controller
 {
     use ApiResponses;
 

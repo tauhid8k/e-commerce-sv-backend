@@ -8,7 +8,7 @@ use App\Http\Resources\Api\User\UserResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.

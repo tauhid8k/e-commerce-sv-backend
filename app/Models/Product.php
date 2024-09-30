@@ -15,6 +15,18 @@ class Product extends Model
     protected $guarded = [];
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'published_at' => 'datetime',
+        ];
+    }
+
+    /**
      * Get categories of the product
      */
     public function categories(): BelongsToMany

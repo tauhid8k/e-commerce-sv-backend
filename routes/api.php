@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\Admin\AdminUserController;
 use App\Http\Controllers\Api\Admin\AdminBrandController;
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\Admin\AdminAttributeController;
+use App\Http\Controllers\Api\Admin\AdminProductController;
 
 // Public Routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -20,11 +21,14 @@ Route::middleware('auth:sanctum')->group(function () {
     // Select Options
     Route::get('/options/categories', [SelectOptionsController::class, 'getCategories']);
     Route::get('/options/brands', [SelectOptionsController::class, 'getBrands']);
+    Route::get('/options/attributes', [SelectOptionsController::class, 'getAttributes']);
+    Route::get('/options/attributes/{id}', [SelectOptionsController::class, 'getAttributeOptions']);
 
     Route::prefix('admin')->group(function () {
+        Route::apiResource('/users', AdminUserController::class);
         Route::apiResource('/categories', AdminCategoryController::class);
         Route::apiResource('/attributes', AdminAttributeController::class);
         Route::apiResource('/brands', AdminBrandController::class);
-        Route::apiResource('/users', AdminUserController::class);
+        Route::apiResource('/products', AdminProductController::class);
     });
 });

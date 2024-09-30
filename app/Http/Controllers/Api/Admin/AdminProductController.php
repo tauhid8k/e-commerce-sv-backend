@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\Api\ProductFilter;
 use App\Http\Requests\Api\Product\StoreProductRequest;
+use App\Http\Resources\Api\Shop\ProductResource;
 use App\Models\Product;
 use App\Models\Sku;
 use App\Traits\ApiResponses;
@@ -18,9 +20,9 @@ class AdminProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ProductFilter $filters)
     {
-        //
+        return ProductResource::collection(Product::with(['brand:name'])->withCount(['skus', 'categories'])->filter($filters)->latest()->paginate());
     }
 
     /**

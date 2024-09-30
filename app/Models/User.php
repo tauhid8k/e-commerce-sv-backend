@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Http\Filters\Api\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -55,23 +56,31 @@ class User extends Authenticatable
         ];
     }
 
+    // Get role
+    public function getRoleAttribute()
+    {
+        return $this->roles()->pluck('name')->first();
+    }
+
+    // Get permissions
+    public function getPermissionsAttribute()
+    {
+        return $this->getPermissionsViaRoles()->pluck('name');
+    }
+
+    /**
+     * Get all reviews
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
     /**
      * Apply dynamic filtering to the query builder using a QueryFilter class
      */
     public function scopeFilter(Builder $builder, QueryFilter $filters)
     {
         return $filters->apply($builder);
-    }
-
-    // Get Role
-    public function getRoleAttribute()
-    {
-        return $this->roles()->pluck('name')->first();
-    }
-
-    // Get Permissions
-    public function getPermissionsAttribute()
-    {
-        return $this->getPermissionsViaRoles()->pluck('name');
     }
 }

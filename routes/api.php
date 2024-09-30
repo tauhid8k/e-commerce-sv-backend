@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Admin\AdminBrandController;
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\Admin\AdminAttributeController;
 use App\Http\Controllers\Api\Admin\AdminProductController;
+use App\Http\Controllers\Api\Admin\AdminReviewController;
 
 // Public Routes
 Route::post('/login', [AuthController::class, 'login']);
@@ -30,5 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::apiResource('/attributes', AdminAttributeController::class);
         Route::apiResource('/brands', AdminBrandController::class);
         Route::apiResource('/products', AdminProductController::class);
+        Route::apiResource('/reviews', AdminReviewController::class);
     });
 });

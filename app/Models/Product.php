@@ -53,6 +53,14 @@ class Product extends Model
     }
 
     /**
+     * Get all reviews of the product
+     */
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    /**
      * Apply dynamic filtering to the query builder using a QueryFilter class
      */
     public function scopeFilter(Builder $builder, QueryFilter $filters)
